@@ -225,7 +225,7 @@ const PendingPOs = () => {
                 {/* Filter Section outside main content box */}
                 <div className="mb-4 flex space-x-4 items-center">
                     <span className="text-xl font-semibold text-black mr-4">
-                        Filters
+                        Filtersss
                     </span>
                     <div className="flex items-center space-x-2 font-kanit">
                         <span className="text-black">Customer</span>
