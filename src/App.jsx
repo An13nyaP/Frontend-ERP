@@ -1,12 +1,12 @@
 import React from "react";
-import PendingPOs from "./components/ui/PendingPOs";
+import PendingPOsPage from './components/PendingPOs/PendingPOsPage'
 
 function App() {
   return (
     <div className="min-h-screen bg-custom-light-blue p-4">
-      <PendingPOs />
+      <PendingPOsPage />
     </div>
-  );
+  )
 }
 
 export default App;
