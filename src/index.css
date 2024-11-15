@@ -19,6 +19,7 @@ body {
   overflow: hidden;
   background-color: #F6F8FC;
   /* Prevent scrollbars if content doesn't require scrolling */
+  
 }
 
 /*:root {
