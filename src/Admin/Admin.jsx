@@ -2,6 +2,10 @@ import React, { useState } from 'react'
 import Sidebar from './Components/Sidebar'
 import PendingPOsPage from './PendingPOs/PendingPOsPage'
 import ViewAllQuotationsPage from './ViewAllQuotations/ViewAllQuotations'
+import ValidateQuotations from './ValidateQuotation/ValidateQuotations'
+import ViewInventory from './ViewInventorys/ViewInventory'
+import CompanyDetails from './UpdateCompanyDetails/CompanyDetails'
+import Dashboard from './Home/Dashboard'
 
 function Admin() {
   const [activeTab, setActiveTab] = useState('Home')
@@ -13,13 +17,13 @@ function Admin() {
       case 'View All Quotations':
         return <ViewAllQuotationsPage />
       case 'Validate Quotations':
-        return <div>Validate Quotations Page</div>
+        return <ValidateQuotations />
       case 'View Inventory':
-        return <div>View Inventory Page</div>
+        return <ViewInventory />
       case 'Update Company Details':
-        return <div>Update Company Details Page</div>
+        return <CompanyDetails />
       default:
-        return <div>Welcome to the Admin Dashboard</div>
+        return <Dashboard />
     }
   }
 
