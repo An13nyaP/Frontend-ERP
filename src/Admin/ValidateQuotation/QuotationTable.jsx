@@ -1,119 +1,141 @@
-import React from 'react';
+import React from 'react'
 
 function QuotationTable() {
-    const tableData = [
-        {
-            slNo: '#20462',
-            quotationNo: 'Hat',
-            customer: 'Matt Dickerson',
-            place: '13/05/2022',
-            value: 'Tranfer Bank',
-            contactPerson: 'Tranfer Bank',
-            quotationDate: '13/05/2022',
-            reason: 'Tranfer Bank'
-        },
-        {
-            slNo: '#20462',
-            quotationNo: 'Hat',
-            customer: 'Matt Dickerson',
-            place: '13/05/2022',
-            value: 'Tranfer Bank',
-            contactPerson: 'Tranfer Bank',
-            quotationDate: '13/05/2022',
-            reason: 'Tranfer Bank'
-        }, {
-            slNo: '#20462',
-            quotationNo: 'Hat',
-            customer: 'Matt Dickerson',
-            place: '13/05/2022',
-            value: 'Tranfer Bank',
-            contactPerson: 'Tranfer Bank',
-            quotationDate: '13/05/2022',
-            reason: 'Tranfer Bank'
-        }, {
-            slNo: '#20462',
-            quotationNo: 'Hat',
-            customer: 'Matt Dickerson',
-            place: '13/05/2022',
-            value: 'Tranfer Bank',
-            contactPerson: 'Tranfer Bank',
-            quotationDate: '13/05/2022',
-            reason: 'Tranfer Bank'
-        }, {
-            slNo: '#20462',
-            quotationNo: 'Hat',
-            customer: 'Matt Dickerson',
-            place: '13/05/2022',
-            value: 'Tranfer Bank',
-            contactPerson: 'Tranfer Bank',
-            quotationDate: '13/05/2022',
-            reason: 'Tranfer Bank'
-        }, {
-            slNo: '#20462',
-            quotationNo: 'Hat',
-            customer: 'Matt Dickerson',
-            place: '13/05/2022',
-            value: 'Tranfer Bank',
-            contactPerson: 'Tranfer Bank',
-            quotationDate: '13/05/2022',
-            reason: 'Tranfer Bank'
-        }, {
-            slNo: '#20462',
-            quotationNo: 'Hat',
-            customer: 'Matt Dickerson',
-            place: '13/05/2022',
-            value: 'Tranfer Bank',
-            contactPerson: 'Tranfer Bank',
-            quotationDate: '13/05/2022',
-            reason: 'Tranfer Bank'
-        }, {
-            slNo: '#20462',
-            quotationNo: 'Hat',
-            customer: 'Matt Dickerson',
-            place: '13/05/2022',
-            value: 'Tranfer Bank',
-            contactPerson: 'Tranfer Bank',
-            quotationDate: '13/05/2022',
-            reason: 'Tranfer Bank'
-        }
-        // Repeat this object 7 more times to create 8 rows of data
-    ];
+  const tableData = [
+    {
+      slNo: '#20462',
+      quotationNo: 'Hat',
+      customer: 'Matt Dickerson',
+      place: '13/05/2022',
+      value: 'Tranfer Bank',
+      contactPerson: 'Tranfer Bank',
+      quotationDate: '13/05/2022',
+      reason: 'Tranfer Bank',
+    },
+    {
+      slNo: '#20462',
+      quotationNo: 'Hat',
+      customer: 'Matt Dickerson',
+      place: '13/05/2022',
+      value: 'Tranfer Bank',
+      contactPerson: 'Tranfer Bank',
+      quotationDate: '13/05/2022',
+      reason: 'Tranfer Bank',
+    },
+    {
+      slNo: '#20462',
+      quotationNo: 'Hat',
+      customer: 'Matt Dickerson',
+      place: '13/05/2022',
+      value: 'Tranfer Bank',
+      contactPerson: 'Tranfer Bank',
+      quotationDate: '13/05/2022',
+      reason: 'Tranfer Bank',
+    },
+    {
+      slNo: '#20462',
+      quotationNo: 'Hat',
+      customer: 'Matt Dickerson',
+      place: '13/05/2022',
+      value: 'Tranfer Bank',
+      contactPerson: 'Tranfer Bank',
+      quotationDate: '13/05/2022',
+      reason: 'Tranfer Bank',
+    },
+    {
+      slNo: '#20462',
+      quotationNo: 'Hat',
+      customer: 'Matt Dickerson',
+      place: '13/05/2022',
+      value: 'Tranfer Bank',
+      contactPerson: 'Tranfer Bank',
+      quotationDate: '13/05/2022',
+      reason: 'Tranfer Bank',
+    },
+    {
+      slNo: '#20462',
+      quotationNo: 'Hat',
+      customer: 'Matt Dickerson',
+      place: '13/05/2022',
+      value: 'Tranfer Bank',
+      contactPerson: 'Tranfer Bank',
+      quotationDate: '13/05/2022',
+      reason: 'Tranfer Bank',
+    },
+    {
+      slNo: '#20462',
+      quotationNo: 'Hat',
+      customer: 'Matt Dickerson',
+      place: '13/05/2022',
+      value: 'Tranfer Bank',
+      contactPerson: 'Tranfer Bank',
+      quotationDate: '13/05/2022',
+      reason: 'Tranfer Bank',
+    },
+    {
+      slNo: '#20462',
+      quotationNo: 'Hat',
+      customer: 'Matt Dickerson',
+      place: '13/05/2022',
+      value: 'Tranfer Bank',
+      contactPerson: 'Tranfer Bank',
+      quotationDate: '13/05/2022',
+      reason: 'Tranfer Bank',
+    },
+    // Repeat this object 7 more times to create 8 rows of data
+  ]
 
-    return (
-        <div className="flex flex-col mt-4 ml-8 text-sm font-medium max-md:max-w-full">
-            <div className="flex flex-wrap gap-4 justify-center items-center p-4 w-full font-bold bg-blue-100 text-sky-950 max-md:max-w-full">
-                <div className="flex-1 grow shrink gap-1 self-stretch my-auto text-center w-[52px]">Sl No.</div>
-                <div className="flex-1 grow shrink gap-1 self-stretch my-auto w-[67px]">Quotation No</div>
-                <div className="flex-1 grow shrink gap-2 self-stretch my-auto whitespace-nowrap w-[147px]">Customer</div>
-                <div className="flex-1 grow shrink gap-2 self-stretch my-auto whitespace-nowrap w-[67px]">Place</div>
-                <div className="flex-1 grow shrink gap-2 self-stretch my-auto whitespace-nowrap w-[67px]">Value</div>
-                <div className="flex-1 grow shrink gap-2 self-stretch my-auto w-[107px]">Contact Person</div>
-                <div className="flex-1 grow shrink gap-2 self-stretch my-auto w-[77px]">Quotation Date</div>
-                <div className="flex-1 grow shrink gap-2 self-stretch my-auto whitespace-nowrap w-[77px]">View</div>
-                <div className="flex-1 grow shrink gap-2 self-stretch my-auto whitespace-nowrap w-[136px]">Approval</div>
-                <div className="grow shrink gap-2 self-stretch my-auto whitespace-nowrap w-[85px]">Reason</div>
-            </div>
-            {tableData.map((row, index) => (
-                <div key={index} className="flex flex-wrap gap-4 justify-center items-center p-4 w-full bg-white border-b-2 border-blue-100 max-md:max-w-full">
-                    <div className="flex-1 grow shrink gap-1 self-stretch my-auto text-center whitespace-nowrap text-sky-950 w-[52px]">{row.slNo}</div>
-                    <div className="flex-1 grow shrink gap-2 self-stretch my-auto whitespace-nowrap text-sky-950 w-[67px]">{row.quotationNo}</div>
-                    <div className="grow shrink gap-2 self-stretch my-auto text-sky-950 w-[147px]">{row.customer}</div>
-                    <div className="flex-1 grow shrink gap-2 self-stretch my-auto whitespace-nowrap text-sky-950 w-[67px]">{row.place}</div>
-                    <div className="flex-1 grow shrink gap-2 self-stretch my-auto text-sky-950 w-[67px]">{row.value}</div>
-                    <div className="flex-1 grow shrink gap-2 self-stretch my-auto text-sky-950 w-[107px]">{row.contactPerson}</div>
-                    <div className="flex-1 grow shrink gap-2 self-stretch my-auto whitespace-nowrap text-sky-950 w-[77px]">{row.quotationDate}</div>
-                    <div className="flex grow shrink gap-2 justify-center items-center self-stretch my-auto text-xs whitespace-nowrap text-slate-50 w-[77px]">
-                        <button className="gap-2.5 self-stretch px-3 py-1 my-auto bg-blue-700 rounded-3xl">Open</button>
-                    </div>
-                    <div className="flex grow shrink gap-1 justify-center items-center self-stretch my-auto text-xs whitespace-nowrap w-[133px]">
-                        <button className="gap-2.5 self-stretch px-3 py-1 my-auto bg-green-600 rounded-3xl text-slate-50">Approve</button>
-                        <button className="gap-2.5 self-stretch px-3 py-1 my-auto text-red-500 rounded-3xl border border-red-500 border-solid">Reject</button>
-                    </div>
-                    <div className="flex-1 grow shrink gap-2 self-stretch my-auto text-sky-950 w-[84px]">{row.reason}</div>
-                </div>
-            ))}
-        </div>
-    );
+  return (
+    <div className="p-4 mt-2">
+      <table className="w-full border-collapse text-sm font-medium text-center">
+        <thead className="bg-blue-100 text-sky-950">
+          <tr>
+            <th className="px-3 py-4 w-[50px]">Sl No.</th>
+            <th className="px-3 py-4 w-[80px]">Quotation No</th>
+            <th className="px-3 py-4 w-[150px]">Customer</th>
+            <th className="px-3 py-4 w-[80px]">Place</th>
+            <th className="px-3 py-4 w-[80px]">Value</th>
+            <th className="px-3 py-4 w-[120px]">Contact Person</th>
+            <th className="px-3 py-4 w-[100px]">Quotation Date</th>
+            <th className="px-3 py-4 w-[80px]">View</th>
+            <th className="px-3 py-4 w-[150px]">Approval</th>
+            <th className="px-3 py-4 w-[100px]">Reason</th>
+          </tr>
+        </thead>
+        <tbody>
+          {tableData.map((row, index) => (
+            <tr
+              key={index}
+              className="border-y-2 border-blue-100 bg-white hover:bg-blue-50"
+              style={{ height: '50px' }} // Adjust row height
+            >
+              <td className="px-4 py-4">{row.slNo}</td>
+              <td className="px-4 py-4">{row.quotationNo}</td>
+              <td className="px-4 py-4">{row.customer}</td>
+              <td className="px-4 py-4">{row.place}</td>
+              <td className="px-4 py-4">{row.value}</td>
+              <td className="px-4 py-4">{row.contactPerson}</td>
+              <td className="px-4 py-4">{row.quotationDate}</td>
+              <td className="px-4 py-4">
+                <button className="bg-blue-700 text-white px-3 py-1 rounded-3xl">
+                  Open
+                </button>
+              </td>
+              <td className="px-4 py-4 flex justify-center gap-2">
+                <button className="bg-green-600 text-white px-3 py-1 rounded-3xl">
+                  Approve
+                </button>
+                <button className="border border-red-500 text-red-500 px-3 py-1 rounded-3xl">
+                  Reject
+                </button>
+              </td>
+              <td className="px-4 py-4">{row.reason}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  )
 }
 
-export default QuotationTable;
+export default QuotationTable
