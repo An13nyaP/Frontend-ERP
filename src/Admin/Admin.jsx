@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import Sidebar from './Components/Sidebar'
-import PendingPOsPage from './PendingPOs/PendingPOsPage'
+import PendingPOsPage from './PendingPOs/PendingPOs'
 import ViewAllQuotationsPage from './ViewAllQuotations/ViewAllQuotations'
 import ValidateQuotations from './ValidateQuotation/ValidateQuotations'
 import ViewInventory from './ViewInventorys/ViewInventory'
-import CompanyDetails from './UpdateCompanyDetails/CompanyDetails'
+import CompanyDetails from './UpdateCompanyDetails/UpdateCompanyDetails'
 import Dashboard from './Home/Dashboard'
 
 function Admin() {
@@ -28,9 +28,14 @@ function Admin() {
   }
 
   return (
-    <div className="flex overflow-hidden flex-row gap-6 bg-slate-50 p-4">
-      <Sidebar onTabChange={setActiveTab} activeTab={activeTab} />
-      <div className="flex-1">{renderContent()}</div>
+    <div className="flex h-screen overflow-hidden bg-slate-50">
+      {/* Sticky Sidebar */}
+      <div className="w-64 flex-shrink-0 bg-white ">
+        <Sidebar onTabChange={setActiveTab} activeTab={activeTab} />
+      </div>
+
+      {/* Scrollable Content */}
+      <div className="flex-1 overflow-y-auto p-4">{renderContent()}</div>
     </div>
   )
 }
