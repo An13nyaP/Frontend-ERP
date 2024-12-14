@@ -1,5 +1,4 @@
 import React from 'react';
-import Sidebar from '../components/Sidebar';
 import Header from './Header';
 import CompanyForm from './CompanyForm';
 

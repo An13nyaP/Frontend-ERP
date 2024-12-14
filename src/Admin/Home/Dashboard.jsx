@@ -1,5 +1,4 @@
 import React from 'react';
-import Sidebar from '../components/Sidebar';
 import StatCard from './StatCard';
 import Chart from './Chart';
 import MonthList from './MonthList';
