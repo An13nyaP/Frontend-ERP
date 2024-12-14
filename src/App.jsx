@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter,Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 // import POView from "./components/POSView/POViews";
 // import PendingPOsPage from './Admin/PendingPOs/PendingPOsPage';
@@ -11,19 +11,23 @@ import { BrowserRouter,Routes, Route } from 'react-router-dom'
 // //import P0 from "./components/CreatePoInward/PurchaseOrderForm";
 // //import POViews from "./components/POSView/POViews";
 import Admin from "./Admin/Admin";
-import Login from "./Login"
+import Sales from "./Sales/Sales";
+import Login from "./Login";
+import Salespage from "./Sales/Sales";
 
 
 function App() {
   return (
     // keep this p-4 inside each component otherwise the whole screen has padding
-    // <div className="min-h-screen  bg-custom-light-blue p-4">
+    // <div className="min-h-screen bg-custom-light-blue p-4">
     <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<Login />} />
-      <Route path="/admin" exact element={<Admin />} />
-    </Routes>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/admin" exact element={<Admin />} />
+        <Route path="/sales" exact element={<Sales />} />
+      </Routes>
     </BrowserRouter>
+    // </div>
   )
 }
 
