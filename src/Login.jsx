@@ -25,8 +25,8 @@ function LoginComponent() {
         body: JSON.stringify({ userType, userId, password }),
       })
 
-      if (response.ok || 1==1) {
-        navigate('/admin')
+      if (response.ok || 1 == 1) {
+        navigate('/sales')
       } else {
         const errorData = await response.json()
         toast.error(errorData.message || 'Login failed')
@@ -80,6 +80,7 @@ function LoginComponent() {
               >
                 <option value="">Select User Type</option>
                 <option value="Admin">Admin</option>
+                <option value="Sales">Sales</option>
                 <option value="Manager">Manager</option>
                 <option value="Accounts">Accounts</option>
                 <option value="Engineer">Engineer</option>
