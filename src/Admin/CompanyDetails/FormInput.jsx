@@ -7,7 +7,7 @@ function FormInput({ label, className = '' }) {
             <input
                 type="text"
                 id={label.toLowerCase().replace(/\s+/g, '-')}
-                className="flex flex-1 gap-1 py-1.5 w-full bg-white rounded border border-solid border-stone-300 min-h-[39px]"
+                className="flex flex-1 gap-1 py-1.5 px-2 w-[285px] bg-white rounded border border-solid border-stone-300 h-[39px]"
             />
         </div>
     );

@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import Sidebar from './Components/Sidebar'
-import PendingPOsPage from './PendingPOs/PendingPOs'
-import ViewAllQuotationsPage from './ViewAllQuotations/ViewAllQuotations'
+import PendingPOsPage from './PendingWorkOrders/PendingWorkOrder'
+import ApprovalsPage from './Approvals/Approvals'
 import ValidateQuotations from './ValidateQuotation/ValidateQuotations'
 import ViewInventory from './ViewInventorys/ViewInventory'
-import CompanyDetails from './UpdateCompanyDetails/UpdateCompanyDetails'
+import CompanyDetails from './CompanyDetails/CompanyDetails'
 import Dashboard from './Home/Dashboard'
 
 function Admin() {
@@ -12,15 +12,15 @@ function Admin() {
 
   const renderContent = () => {
     switch (activeTab) {
-      case "Pending PO's":
+      case 'Pending Work Orders':
         return <PendingPOsPage />
-      case 'View All Quotations':
-        return <ViewAllQuotationsPage />
-      case 'Validate Quotations':
+      case 'Approvals':
+        return <ApprovalsPage />
+      case 'Employee':
         return <ValidateQuotations />
-      case 'View Inventory':
+      case 'Inventory':
         return <ViewInventory />
-      case 'Update Company Details':
+      case 'Company Details':
         return <CompanyDetails />
       default:
         return <Dashboard />
@@ -35,7 +35,9 @@ function Admin() {
       </div>
 
       {/* Scrollable Content */}
-      <div className="flex-1 overflow-y-auto p-4">{renderContent()}</div>
+      <div className="flex-1 overflow-y-auto pt-20">
+        {renderContent()}
+      </div>
     </div>
   )
 }
