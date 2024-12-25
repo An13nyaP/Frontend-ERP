@@ -4,6 +4,7 @@
 import React from "react";
 import TableHeader from "./TableHeader";
 import TableRow from "./TableRow";
+import Pagination from "../Components/Pagination";
 
 const tableData = [
   {
@@ -128,15 +129,16 @@ const tableData = [
   },
 ];
 
-function PendingPOsTable() {
+function PendingWorkOrdersTable() {
   return (
-    <div className="flex flex-col mt-6 w-full max-md:max-w-full">
+    <div className="flex flex-col my-6 w-full max-md:max-w-full">
       <TableHeader />
       {tableData.map((row, index) => (
         <TableRow key={index} {...row} />
       ))}
+      <Pagination/>
     </div>
   );
 }
 
-export default PendingPOsTable;
+export default PendingWorkOrdersTable;

@@ -3,7 +3,7 @@ import React from 'react'
 function Pagination() {
   return (
     <nav
-      className="flex gap-4 items-start self-center mt-24 max-w-full w-[392px] max-md:mt-10"
+      className="flex gap-4 items-start self-center mt-10 max-w-full w-[392px] max-md:mt-10"
       aria-label="Pagination"
     >
       <button

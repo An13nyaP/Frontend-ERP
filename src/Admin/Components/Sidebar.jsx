@@ -2,11 +2,11 @@ import React from 'react'
 
 const menuItems = [
   { name: 'Home', isActive: false },
-  { name: "Pending PO's", isActive: false },
-  { name: 'View All Quotations', isActive: false },
-  { name: 'Validate Quotations', isActive: false },
-  { name: 'View Inventory', isActive: false },
-  { name: 'Update Company Details', isActive: false },
+  { name: "Pending Work Orders", isActive: false },
+  { name: 'Approvals', isActive: false },
+  { name: 'Employee', isActive: false },
+  { name: 'Inventory', isActive: false },
+  { name: 'Company Details', isActive: false },
 ]
 
 function Sidebar({ onTabChange, activeTab }) {
