@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import FilterSection from '../Components/FilterSection'
 import QuotationTable from './QuotationTable'
 import UpdateRoleTable from './UpdateRoleTable'
-import Pagination from './Pagination'
+import Pagination from '../Components/Pagination'
 import RecruitEmployee from './RecruitEmployee'
 import LayOffEmployee from'./LayOffEmployee'
 

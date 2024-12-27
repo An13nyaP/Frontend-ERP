@@ -3,10 +3,11 @@ import Header from "./Header";
 import FilterSection from "./Filters";
 import SearchBar from "./SearchBar";
 import InventoryTable from "./InventoryTable";
+import Pagination from '../Components/Pagination'
 
 function Inventory() {
     return (
-        <div className="flex overflow-hidden flex-wrap gap-6 bg-slate-50">
+        <div className="flex overflow-hidden flex-wrap gap-6 mb-10 bg-slate-50">
             {/* <Sidebar /> */}
             <div className="flex flex-col grow shrink-0 basis-0 w-fit max-md:max-w-full">
                 {/* <Header /> */}
@@ -14,6 +15,7 @@ function Inventory() {
                     <FilterSection />
                     <SearchBar  />
                     <InventoryTable />
+                    <Pagination />
                 </div>
             </div>
         </div>

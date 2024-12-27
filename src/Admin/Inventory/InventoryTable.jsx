@@ -10,76 +10,198 @@ function InventoryTable() {
       unitOfMeasure: '13/05/2022',
       qtyNos: '13/05/2022',
       unitRate: '$4.95',
-      totalAmount: 'Tranfer Bank',
+      totalAmount: 'Transfer Bank',
     },
-    // Add other inventory items here
+    {
+      id: 1,
+      part: 'Hat',
+      description: 'Matt Dickerson',
+      hsnNumber: '13/05/2022',
+      unitOfMeasure: '13/05/2022',
+      qtyNos: '13/05/2022',
+      unitRate: '$4.95',
+      totalAmount: 'Transfer Bank',
+    },
+    {
+      id: 1,
+      part: 'Hat',
+      description: 'Matt Dickerson',
+      hsnNumber: '13/05/2022',
+      unitOfMeasure: '13/05/2022',
+      qtyNos: '13/05/2022',
+      unitRate: '$4.95',
+      totalAmount: 'Transfer Bank',
+    },
+    {
+      id: 1,
+      part: 'Hat',
+      description: 'Matt Dickerson',
+      hsnNumber: '13/05/2022',
+      unitOfMeasure: '13/05/2022',
+      qtyNos: '13/05/2022',
+      unitRate: '$4.95',
+      totalAmount: 'Transfer Bank',
+    },
+    {
+      id: 1,
+      part: 'Hat',
+      description: 'Matt Dickerson',
+      hsnNumber: '13/05/2022',
+      unitOfMeasure: '13/05/2022',
+      qtyNos: '13/05/2022',
+      unitRate: '$4.95',
+      totalAmount: 'Transfer Bank',
+    },
+    {
+      id: 1,
+      part: 'Hat',
+      description: 'Matt Dickerson',
+      hsnNumber: '13/05/2022',
+      unitOfMeasure: '13/05/2022',
+      qtyNos: '13/05/2022',
+      unitRate: '$4.95',
+      totalAmount: 'Transfer Bank',
+    },
+    {
+      id: 1,
+      part: 'Hat',
+      description: 'Matt Dickerson',
+      hsnNumber: '13/05/2022',
+      unitOfMeasure: '13/05/2022',
+      qtyNos: '13/05/2022',
+      unitRate: '$4.95',
+      totalAmount: 'Transfer Bank',
+    },
+    {
+      id: 1,
+      part: 'Hat',
+      description: 'Matt Dickerson',
+      hsnNumber: '13/05/2022',
+      unitOfMeasure: '13/05/2022',
+      qtyNos: '13/05/2022',
+      unitRate: '$4.95',
+      totalAmount: 'Transfer Bank',
+    },
+    {
+      id: 1,
+      part: 'Hat',
+      description: 'Matt Dickerson',
+      hsnNumber: '13/05/2022',
+      unitOfMeasure: '13/05/2022',
+      qtyNos: '13/05/2022',
+      unitRate: '$4.95',
+      totalAmount: 'Transfer Bank',
+    },
+    {
+      id: 1,
+      part: 'Hat',
+      description: 'Matt Dickerson',
+      hsnNumber: '13/05/2022',
+      unitOfMeasure: '13/05/2022',
+      qtyNos: '13/05/2022',
+      unitRate: '$4.95',
+      totalAmount: 'Transfer Bank',
+    },
+    {
+      id: 1,
+      part: 'Hat',
+      description: 'Matt Dickerson',
+      hsnNumber: '13/05/2022',
+      unitOfMeasure: '13/05/2022',
+      qtyNos: '13/05/2022',
+      unitRate: '$4.95',
+      totalAmount: 'Transfer Bank',
+    },
+    {
+      id: 1,
+      part: 'Hat',
+      description: 'Matt Dickerson',
+      hsnNumber: '13/05/2022',
+      unitOfMeasure: '13/05/2022',
+      qtyNos: '13/05/2022',
+      unitRate: '$4.95',
+      totalAmount: 'Transfer Bank',
+    },
+    {
+      id: 1,
+      part: 'Hat',
+      description: 'Matt Dickerson',
+      hsnNumber: '13/05/2022',
+      unitOfMeasure: '13/05/2022',
+      qtyNos: '13/05/2022',
+      unitRate: '$4.95',
+      totalAmount: 'Transfer Bank',
+    },
+
+    // Add more inventory items here
   ]
 
   const headers = [
-    'Sl No.',
-    'Part',
-    'Item Description',
-    'Hsn Number',
-    'Unit Of Mesure',
-    'Qty Nos',
-    'Unit Rate in INR',
-    'Total Amount in INR',
-    'Delete',
+    { title: 'Sl No.', width: '80px' },
+    { title: 'Part', width: '100px' },
+    { title: 'Item Description', width: '200px' },
+    { title: 'Hsn Number', width: '150px' },
+    { title: 'Unit Of Mesure', width: '150px' },
+    { title: 'Qty Nos', width: '100px' },
+    { title: 'Unit Rate in INR', width: '150px' },
+    { title: 'Total Amount in INR', width: '200px' },
+    { title: 'Delete', width: '80px' },
   ]
 
   return (
-    <div className="flex flex-col self-stretch mt-12 w-full min-h-[647px] max-md:mt-10 max-md:max-w-full">
-      <div className="flex justify-between items-center bg-blue-100 text-sm font-bold text-black py-4 px-2">
+    <div className="w-full mt-12">
+      {/* Header Row */}
+      <div className="flex bg-blue-100 font-bold text-black py-3">
         {headers.map((header, index) => (
           <div
             key={index}
-            className="text-center px-4"
+            className="text-center"
             style={{
-              flex:
-                index === 0 || index === headers.length - 1 ? '0 0 80px' : '1',
+              width: header.width,
+              textAlign: 'center',
+              padding: '0 10px',
             }}
           >
-            {header}
+            {header.title}
           </div>
         ))}
       </div>
+
+      {/* Data Rows */}
       {inventoryItems.map((item, index) => (
         <div
           key={item.id}
-          className="flex justify-between items-center border-b border-gray-200 text-sm text-sky-950 py-4 px-2"
+          className="flex items-center border-b border-gray-200 text-sm text-sky-950 py-3"
         >
-          <div className="text-center px-4" style={{ flex: '1' }}>
+          <div className="text-center" style={{ width: headers[0].width }}>
             {index + 1}
           </div>
-          <div className="px-4" style={{ flex: '1' }}>
+          <div className="text-center" style={{ width: headers[1].width }}>
             {item.part}
           </div>
-          <div className="px-4" style={{ flex: '1' }}>
+          <div className="text-center" style={{ width: headers[2].width }}>
             {item.description}
           </div>
-          <div className="px-4" style={{ flex: '1' }}>
+          <div className="text-center" style={{ width: headers[3].width }}>
             {item.hsnNumber}
           </div>
-          <div className="px-4" style={{ flex: '1' }}>
+          <div className="text-center" style={{ width: headers[4].width }}>
             {item.unitOfMeasure}
           </div>
-          <div className="px-4" style={{ flex: '1' }}>
+          <div className="text-center" style={{ width: headers[5].width }}>
             {item.qtyNos}
           </div>
-          <div className="px-4" style={{ flex: '1' }}>
+          <div className="text-center" style={{ width: headers[6].width }}>
             {item.unitRate}
           </div>
-          <div className="px-4" style={{ flex: '1' }}>
+          <div className="text-center" style={{ width: headers[7].width }}>
             {item.totalAmount}
           </div>
-          <div
-            className="flex justify-center items-center px-4"
-            style={{ flex: '0 0 80px' }}
-          >
+          <div className="text-center" style={{ width: headers[8].width }}>
             <img
               src="https://your-icon-url.com/delete-icon.png"
               alt="Delete"
-              className="w-5 h-5"
+              className="w-5 h-5 mx-auto"
             />
           </div>
         </div>
