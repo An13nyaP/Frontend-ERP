@@ -2,7 +2,7 @@ import React from 'react';
 
 function Pagination() {
     return (
-        <nav className="flex gap-4 items-start self-center mt-24 max-w-full w-[392px] max-md:mt-10" aria-label="Pagination">
+        <nav className="flex gap-4 items-start self-center mt-10 max-w-full w-[392px] max-md:mt-10" aria-label="Pagination">
             <button className="flex justify-center items-center w-10 h-10 bg-white rounded border border-solid border-zinc-700 min-h-[40px]" aria-label="Previous page">
                 <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/6bd53ba5761257b52f4401be8787ac03392a4fd60473e50995b665264f641943?placeholderIfAbsent=true&apiKey=4b67e31b94e242ca8da7bea04ad48539" alt="" className="object-contain self-stretch my-auto w-6 aspect-square" />
             </button>
