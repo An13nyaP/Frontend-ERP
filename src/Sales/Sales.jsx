@@ -4,7 +4,7 @@ import PendingWorkOrders from './PendingWorkOrders/PendingWOsPage'
 import RequestForQuotation from './RequestForQuotation/RFQ'
 import Customer from './Customers/Customer'
 import Quotations from './Quotations/Quotations'
-// import AddPOInward from './AddPOInward/AddPOInward'
+import AddPOInward from './AddPOInward/AddPOInward3'
 import ProjectStatus from './ProjectStatus/ProjectStatus'
 
 function Sales() {
@@ -24,8 +24,8 @@ function Sales() {
                 return <Customer />
             case "Quotation's":
                 return <Quotations />
-            // case 'Add PO Inward':
-            //     return <AddPOInward />
+            case 'Add PO Inward':
+                return <AddPOInward />
             case 'Project Acceptance Status':
                 return <ProjectStatus />
             default:

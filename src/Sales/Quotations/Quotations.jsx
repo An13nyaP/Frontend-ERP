@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-//import CreateQuotation from "./CreateQuotation/QuotationForm";
+import CreateQuotation from "./CreateQuotation/Inventory";
 import ViewAllQuotations from "./AllQuotation/QuotationTable";
 import ApprovedQuotations from "./ApprovedQuotation/QuotationTable";
 import RejectedQuotations from "./RejectQuotation/QuotationTable";
@@ -9,8 +9,8 @@ function Quotations() {
 
     const renderContent = () => {
         switch (activeTab) {
-            // case "create":
-            //     return <CreateQuotation />;
+            case "create":
+                return <CreateQuotation />;
             case "all":
                 return <ViewAllQuotations />;
             case "approved":
@@ -23,7 +23,7 @@ function Quotations() {
     };
 
     return (
-        <div className="p-4 bg-gray-100 min-h-screen">
+        <div className="p-4 mt-4 min-h-screen">
             <div className="flex gap-4">
                 <button
                     className={`px-4 py-2 font-medium rounded ${activeTab === "create"
