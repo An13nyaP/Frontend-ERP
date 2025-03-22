@@ -3,7 +3,7 @@ import Header from "./Header";
 import FilterSection from "./Filters";
 import SearchBar from "./SearchBar";
 import InventoryTable from "./InventoryTable";
-import Pagination from '../Components/Pagination'
+// import Pagination from '../Components/Pagination'
 
 function Inventory() {
     return (
@@ -15,7 +15,7 @@ function Inventory() {
                     <FilterSection />
                     <SearchBar />
                     <InventoryTable />
-                    <Pagination />
+                    {/* <Pagination /> */}
                 </div>
             </div>
         </div>
