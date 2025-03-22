@@ -1,42 +1,60 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { toast } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function LoginComponent() {
-  const navigate = useNavigate()
-  const [userType, setUserType] = useState('')
-  const [userId, setUserId] = useState('')
-  const [password, setPassword] = useState('')
-  const [isSubmitting, setIsSubmitting] = useState(false)
+  const navigate = useNavigate();
+  const [userType, setUserType] = useState("");
+  const [userId, setUserId] = useState("");
+  const [password, setPassword] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const isFormValid = userType && userId && password
+  const isFormValid = userType && userId && password;
 
   const handleLogin = async (e) => {
-    e.preventDefault()
-    setIsSubmitting(true)
+    e.preventDefault();
+    setIsSubmitting(true);
 
     try {
-      const response = await fetch('YOUR_BACKEND_LOGIN_ENDPOINT', {
-        method: 'POST',
+      const response = await fetch("YOUR_BACKEND_LOGIN_ENDPOINT", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({ userType, userId, password }),
-      })
+      });
 
       if (response.ok || 1 == 1) {
-        navigate('/sales')
+        switch (userType) {
+          case "Admin":
+            navigate("/admin");
+            break;
+          case "Sales":
+            navigate("/sales");
+            break;
+          case "Project Engineer":
+            navigate("/project-engineer");
+            break;
+          case "Project Manager":
+            navigate("/project-manager");
+            break;
+          case "Store":
+            navigate("/Store");
+            break;
+          default:
+            toast.error("Invalid User Type");
+        }
       } else {
-        const errorData = await response.json()
-        toast.error(errorData.message || 'Login failed')
+        const errorData = await response.json();
+        toast.error(errorData.message || "Login failed");
       }
     } catch (error) {
-      toast.error('An error occurred during login')
+      toast.error("An error occurred during login");
     } finally {
-      setIsSubmitting(false)
+      setIsSubmitting(false);
     }
-  }
+  };
 
   return (
     <main className="flex items-center justify-center min-h-screen bg-slate-50 text-sky-950">
@@ -81,9 +99,12 @@ function LoginComponent() {
                 <option value="">Select User Type</option>
                 <option value="Admin">Admin</option>
                 <option value="Sales">Sales</option>
-                <option value="Manager">Manager</option>
-                <option value="Accounts">Accounts</option>
-                <option value="Engineer">Engineer</option>
+                <option value="Project Manager">Project Manager</option>
+                <option value="Project Engineer">Project Engineer</option>
+                <option value="Quality Engineer">Quality Engineer</option>
+                <option value="Store">Store</option>
+                <option value="Purchase">Purchase</option>
+
               </select>
             </div>
 
@@ -133,7 +154,7 @@ function LoginComponent() {
         </div>
       </div>
     </main>
-  )
+  );
 }
 
-export default LoginComponent
+export default LoginComponent;

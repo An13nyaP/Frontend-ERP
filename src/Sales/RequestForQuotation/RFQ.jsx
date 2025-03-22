@@ -20,10 +20,10 @@ function RFQ() {
     };
 
     return (
-        <div className="p-4 bg-gray-100 min-h-screen">
+        <div className="p-4 mt-4 min-h-screen">
 
             {/* Navigation Buttons */}
-            <div className="flex gap-4 mb-4">
+            <div className="flex gap-4">
                 <button
                     className={`px-4 py-2 font-medium rounded ${activeTab === "new"
                         ? "border-b-4 border-blue-500 text-blue-500"
