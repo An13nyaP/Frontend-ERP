@@ -3,7 +3,7 @@ import Header from "./Header";
 import FilterSection from "./Filters";
 import SearchBar from "./SearchBar";
 import InventoryTable from "./InventoryTable";
-import Pagination from '../Components/Pagination'
+// import Pagination from '../Components/Pagination'
 
 function Inventory() {
     return (
@@ -13,9 +13,9 @@ function Inventory() {
                 {/* <Header /> */}
                 <div className="flex flex-col items-center px-4 py- w-full bg-white shadow-[4px_4px_40px_rgba(0,0,0,0.15)] max-md:max-w-full">
                     <FilterSection />
-                    <SearchBar  />
+                    <SearchBar />
                     <InventoryTable />
-                    <Pagination />
+                    {/* <Pagination /> */}
                 </div>
             </div>
         </div>
