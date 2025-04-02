@@ -4,42 +4,42 @@
 import React from "react";
 
 function TableRow({
-  id,
-  item,
+  workordernumber,
+  po_number,
   customer,
-  poDate,
+  po_date,
   amount,
-  projectEngineer,
-  qualityEngineer,
-  deliveryDate,
+  project_engineers,
+  quality_engineers,
+  delivery_date,
   status,
   remarks,
 }) {
   return (
     <div className="flex flex-wrap gap-4 justify-center items-center p-4 w-full bg-white border-b-2 border-blue-100 max-md:max-w-full">
       <div className="flex-1 shrink gap-1 self-stretch my-auto text-sm font-medium text-center whitespace-nowrap text-sky-950">
-        {id}
+        {workordernumber}
       </div>
       <div className="flex-1 shrink gap-2 self-stretch my-auto text-sm font-medium whitespace-nowrap text-sky-950">
-        {item}
+        {po_number}
       </div>
       <div className="flex-1 shrink gap-2 self-stretch my-auto text-sm font-medium text-sky-950">
         {customer}
       </div>
       <div className="flex-1 shrink gap-2 self-stretch my-auto text-sm font-medium whitespace-nowrap text-sky-950">
-        {poDate}
+        {po_date}
       </div>
       <div className="flex-1 shrink gap-2 self-stretch my-auto text-sm font-medium text-sky-950">
         {amount}
       </div>
       <div className="flex-1 shrink gap-2 self-stretch my-auto text-sm font-medium text-sky-950">
-        {projectEngineer}
+        {project_engineers}
       </div>
       <div className="flex-1 shrink gap-2 self-stretch my-auto text-sm font-medium text-sky-950">
-        {qualityEngineer}
+        {quality_engineers}
       </div>
       <div className="flex-1 shrink gap-2 self-stretch my-auto text-sm font-medium whitespace-nowrap text-sky-950">
-        {deliveryDate}
+        {delivery_date}
       </div>
       <div className="flex flex-1 shrink gap-2 items-center self-stretch my-auto text-xs font-medium text-green-600 whitespace-nowrap basis-0">
         <div className="gap-2.5 self-stretch px-3 py-2 my-auto bg-emerald-50 rounded-3xl">
