@@ -1,55 +1,59 @@
-import * as React from "react";
+import React, { useEffect, useState } from "react";
 import TableRow from "./TableRow";
 import FilterSection from "../../components/FilterSection";
+import API_ENDPOINTS from "../../../constants/apiEndPoints";
 import TableHeader from "./TableHeader";
 
-const customerData = [
-    {
-        id: "123",
-        name: "Zeal Manufacturing Company",
-        address: "48/A, 5th Main Rd, Kempamma Layout, Lakshmi Devi Nagar, Sanjay Gandhi Nagar, Bengaluru, Karnataka 560096",
-        city: "Bangalore",
-        phone: "4564646469",
-        email: "zealman@gmail.com"
-    },
-    {
-        id: "223",
-        name: "Zeal Manufacturing Company",
-        address: "48/A, 5th Main Rd, Kempamma Layout, Lakshmi Devi Nagar, Sanjay Gandhi Nagar, Bengaluru, Karnataka 560096",
-        city: "Mysore",
-        phone: "4564646469",
-        email: "zealman@gmail.com"
-    },
-    {
-        id: "323",
-        name: "Zeal Manufacturing Company",
-        address: "48/A, 5th Main Rd, Kempamma Layout, Lakshmi Devi Nagar, Sanjay Gandhi Nagar, Bengaluru, Karnataka 560096",
-        city: "Goa",
-        phone: "4564646469",
-        email: "zealman@gmail.com"
-    },
-    {
-        id: "423",
-        name: "Zeal Manufacturing Company",
-        address: "48/A, 5th Main Rd, Kempamma Layout, Lakshmi Devi Nagar, Sanjay Gandhi Nagar, Bengaluru, Karnataka 560096",
-        city: "Hyderabad",
-        phone: "4564646469",
-        email: "zealman@gmail.com"
-    }
-];
+function ViewAllCustomersTable() {
+    const [tableData, setTableData] = useState([]);
+    const [loading, setLoading] = useState(true);
 
-function CustomerTable() {
+    useEffect(() => {
+        const fetchCustomers = async () => {
+            try {
+                const response = await fetch(API_ENDPOINTS.customer.viewAllCustomers);
+                if (!response.ok) {
+                    throw new Error("Network response was not ok");
+                }
+                const data = await response.json();
+
+                const formattedData = data.map((item) => ({
+                    id: item.customerid,
+                    name: item.customerName,
+                    address: `${item.addressLine1}, ${item.addressLine2}`,
+                    city: item.city,
+                    phone: item.phoneNumber,
+                    email: item.emailAddress,
+                }));
+
+                setTableData(formattedData);
+            } catch (error) {
+                console.error("Failed to fetch customers:", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchCustomers();
+    }, []);
+
     return (
-        <div className="flex flex-col text-sm font-medium text-sky-950">
-            <div className="flex flex-col w-full  max-md:max-w-full">
-                <FilterSection className="my-[24px]" />
-                <TableHeader />
-                {customerData.map((customer) => (
-                    <TableRow key={customer.id} {...customer} />
-                ))}
-            </div>
+        <div className="flex flex-col w-full max-md:max-w-full overflow-auto">
+            <FilterSection />
+            <TableHeader />
+
+            {loading ? (
+                <p className="text-center py-4">Loading Customers...</p>
+            ) : (
+                <>
+                    {/* Optional: add a TableHeader if needed */}
+                    {tableData.map((row, index) => (
+                        <TableRow key={index} {...row} />
+                    ))}
+                </>
+            )}
         </div>
     );
 }
 
-export default CustomerTable;
+export default ViewAllCustomersTable;

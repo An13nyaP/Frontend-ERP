@@ -11,7 +11,7 @@ function PendingWOsTable() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(API_ENDPOINTS.getPendingWorkOrders);
+        const response = await fetch(API_ENDPOINTS.poInwards.getPendingWorkOrders);
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }

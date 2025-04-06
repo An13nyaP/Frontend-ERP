@@ -29,7 +29,7 @@ function Sales() {
             case 'Project Acceptance Status':
                 return <ProjectStatus />
             default:
-                return <Customer /> // Fallback to Customer
+                return <PendingWorkOrders />
         }
     }
 
