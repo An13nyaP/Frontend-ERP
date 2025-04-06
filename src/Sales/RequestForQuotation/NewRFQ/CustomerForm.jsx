@@ -1,45 +1,121 @@
 import * as React from "react";
+import { useState } from "react";
 import { FormField } from "./FormField";
+import API_ENDPOINTS from "../../../constants/apiEndPoints";
 
 export default function CustomerForm() {
-    const handleSubmit = (e) => {
+    const [formData, setFormData] = useState({
+        customerName: "",
+        customerNumber: "",
+        location: "",
+        country: "",
+        requestVia: "",
+        referenceNumber: "",
+        goodType: "",
+        submitDate: "",
+        contactName: "",
+        contactEmail: "",
+        contactPhone: "",
+    });
+
+    const handleChange = (e) => {
+        const { id, value } = e.target;
+        setFormData((prev) => ({ ...prev, [id]: value }));
+    };
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
+
+        const payload = {
+            customerid: parseInt(formData.customerNumber),
+            location: formData.location,
+            country: formData.country,
+            requestVia: formData.requestVia,
+            requestReferenceNumber: formData.referenceNumber,
+            typeOfGoods: formData.goodType,
+            lastDateToSubmit: formData.submitDate,
+            contactPerson: formData.contactName,
+            contactPersonNumber: formData.contactPhone,
+            contactPersonEmail: formData.contactEmail,
+            status: null
+        };
+
+        if (isNaN(payload.customerid)) {
+            alert("Customer Number must be a valid number.");
+            return;
+        }
+
+        try {
+            const response = await fetch(API_ENDPOINTS.rfq.createRFQ, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(payload),
+            });
+
+            if (!response.ok) {
+                throw new Error(`Failed to create RFQ: ${response.status}`);
+            }
+
+            const result = await response.json();
+            console.log("RFQ Created:", result);
+            alert("RFQ submitted successfully!");
+
+            setFormData({
+                customerName: "",
+                customerNumber: "",
+                location: "",
+                country: "",
+                requestVia: "",
+                referenceNumber: "",
+                goodType: "",
+                submitDate: "",
+                contactName: "",
+                contactEmail: "",
+                contactPhone: "",
+            });
+        } catch (error) {
+            console.error("Error submitting RFQ:", error);
+            alert("Error submitting RFQ");
+        }
     };
 
     const formFields = [
         [
-            { label: "Customer Name", id: "customerName" },
-            { label: "Customer Number", id: "customerNumber" }
+            { label: "Customer Name (for display)", id: "customerName" },
+            { label: "Customer ID / Number", id: "customerNumber" },
         ],
         [
-            { label: "Location", id: "location" },
+            { label: "Site Location", id: "location" },
             { label: "Country", id: "country" },
-            { label: "Request via", id: "requestVia" }
+            { label: "Request Received Via", id: "requestVia" },
         ],
         [
-            { label: "Request Reference Number", id: "referenceNumber" },
-            { label: "Type Of Good", id: "goodType" },
-            { label: "Last Date To Submit", id: "submitDate" }
+            { label: "Reference Number", id: "referenceNumber" },
+            { label: "Type of Goods", id: "goodType" },
+            { label: "Deadline to Submit (YYYY-MM-DD)", id: "submitDate" },
         ],
         [
-            { label: "Contact Person Name", id: "contactName" },
-            { label: "Contact Person Email", id: "contactEmail" },
-            { label: "Contact Person Phone Number", id: "contactPhone" }
-        ]
+            { label: "Contact Name", id: "contactName" },
+            { label: "Contact Email", id: "contactEmail" },
+            { label: "Contact Phone Number", id: "contactPhone" },
+        ],
     ];
 
     return (
         <form onSubmit={handleSubmit} className="flex flex-col rounded-none">
             <div className="flex flex-col px-20 pt-11 pb-32 w-full bg-white max-md:px-5 max-md:pb-24 max-md:max-w-full">
                 <div className="flex flex-col w-full max-w-[979px] max-md:max-w-full">
-                    {/* First Row */}
                     <div className="flex gap-5 mb-9 max-md:flex-col">
                         {formFields[0].map((field) => (
-                            <div
-                                key={field.id}
-                                className="flex flex-col w-[48%] max-md:w-full"
-                            >
-                                <FormField label={field.label} id={field.id} />
+                            <div key={field.id} className="flex flex-col w-[48%] max-md:w-full">
+                                <FormField
+                                    label={field.label}
+                                    id={field.id}
+                                    value={formData[field.id]}
+                                    onChange={handleChange}
+                                />
                             </div>
                         ))}
                         <button
@@ -57,24 +133,21 @@ export default function CustomerForm() {
                         </button>
                     </div>
 
-                    {/* Next Rows */}
                     {formFields.slice(1).map((row, rowIndex) => (
-                        <div
-                            key={rowIndex}
-                            className="flex gap-5 mb-9 max-md:flex-col"
-                        >
+                        <div key={rowIndex} className="flex gap-5 mb-9 max-md:flex-col">
                             {row.map((field) => (
-                                <div
-                                    key={field.id}
-                                    className="flex flex-col w-[32%] max-md:w-full"
-                                >
-                                    <FormField label={field.label} id={field.id} />
+                                <div key={field.id} className="flex flex-col w-[32%] max-md:w-full">
+                                    <FormField
+                                        label={field.label}
+                                        id={field.id}
+                                        value={formData[field.id]}
+                                        onChange={handleChange}
+                                    />
                                 </div>
                             ))}
                         </div>
                     ))}
 
-                    {/* Add to List Button */}
                     <button
                         type="submit"
                         className="flex flex-col justify-center items-center self-center px-5 py-3 mt-20 text-2xl leading-none text-white bg-blue-700 rounded-xl min-h-[44px] w-[220px] max-md:mt-10"

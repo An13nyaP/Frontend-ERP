@@ -1,19 +1,17 @@
 import * as React from "react";
 
-export function AddressInput({ label, id }) {
+export function AddressInput({ label, id, value, onChange, className = "" }) {
     return (
-        <div className="flex flex-col mt-9">
-            <label htmlFor={id} className="text-base font-light text-sky-950">
-                {label}
-            </label>
-            <div className="flex overflow-hidden flex-col items-end px-14 pt-14 mt-1 w-full bg-white rounded border border-solid border-stone-300 max-md:pl-5">
-                <img
-                    loading="lazy"
-                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/3348d90c6f933ef8d078eacd17a60a2ba81b38860d1fb3cb1111ae21487a71a4?placeholderIfAbsent=true&apiKey=4b67e31b94e242ca8da7bea04ad48539"
-                    alt=""
-                    className="object-contain w-3.5 aspect-[0.93]"
-                />
-            </div>
+        <div className={`flex flex-col w-full text-sm font-light leading-none pt-9 min-h-[65px] text-sky-950 ${className}`}>
+            <label htmlFor={id}>{label}</label>
+            <input
+                type="text"
+                id={id}
+                value={value}
+                onChange={onChange}
+                className="flex flex-1 gap-1 py-1.5 mt-1.5 w-full bg-white rounded border border-solid border-stone-300 min-h-[39px]"
+                aria-label={label}
+            />
         </div>
     );
 }
