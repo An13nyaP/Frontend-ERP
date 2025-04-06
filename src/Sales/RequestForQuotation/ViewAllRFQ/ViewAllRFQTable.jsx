@@ -3,6 +3,8 @@ import FilterSection from "../../components/FilterSection";
 import API_ENDPOINTS from "../../../constants/apiEndPoints";
 import CustomTable from "../../../components/CustomTable";
 import { HEADER_ITEMS } from "../../../constants/tableHeader";
+import CenteredLoader from "../../../components/LottiLoader";
+
 
 function ViewAllRFQTable() {
   const [tableData, setTableData] = useState([]);
@@ -68,7 +70,7 @@ function ViewAllRFQTable() {
     <div className="flex flex-col w-full max-md:max-w-full overflow-auto">
       <FilterSection />
       {loading ? (
-        <p>Loading data...</p>
+       <CenteredLoader />
       ) : (
         <CustomTable
         headers={HEADER_ITEMS.rfqs}

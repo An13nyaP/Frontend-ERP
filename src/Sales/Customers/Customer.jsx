@@ -16,7 +16,7 @@ function Customer() {
     };
 
     return (
-        <div className="p-4 min-h-screen">
+        <div className="min-h-screen">
             <h1 className="text-2xl font-bold text-center mb-4 text-sky-950">
             </h1>
             <div className="flex  gap-4 ">

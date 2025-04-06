@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import FilterSection from "../../components/FilterSection";
-import API_ENDPOINTS from "../../../constants/apiEndPoints";
 import CustomTable from "../../../components/CustomTable";
 import { HEADER_ITEMS } from "../../../constants/tableHeader";
 import { fetchAllCustomers } from "../../../utils/apiServices";
+import CenteredLoader from "../../../components/LottiLoader";
 
 function ViewAllCustomersTable() {
   const [tableData, setTableData] = useState([]);
@@ -23,11 +23,11 @@ function ViewAllCustomersTable() {
     console.log("API Response:", tableData);
   }
   return (
-    <div className="flex flex-col w-full max-md:max-w-full overflow-auto">
+    <div className="flex flex-col w-full max-md:max-w-full bg-white p-4 overflow-auto">
       <FilterSection />
 
       {loading ? (
-        <p className="text-center py-4">Loading Customers...</p>
+        <CenteredLoader />
       ) : (
         <CustomTable
           headers={HEADER_ITEMS.customers}

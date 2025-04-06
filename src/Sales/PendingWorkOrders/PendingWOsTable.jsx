@@ -3,6 +3,7 @@ import FilterSection from "../components/FilterSection";
 import CustomTable from "../../components/CustomTable";
 import { HEADER_ITEMS } from "../../constants/tableHeader";
 import { fetchPendingWorkOrders } from "../../utils/apiServices";
+import CenteredLoader from "../../components/LottiLoader";
 
 function PendingWOsTable() {
   const [tableData, setTableData] = useState([]);
@@ -24,7 +25,7 @@ function PendingWOsTable() {
       <FilterSection />
       <div className="w-full overflow-x-auto">
         {loading ? (
-          <p className="text-sm text-gray-500">Loading data...</p>
+            <CenteredLoader />
         ) : (
           <CustomTable
             headers={HEADER_ITEMS.pendingPo}

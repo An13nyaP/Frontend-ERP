@@ -4,7 +4,7 @@ import PendingRFQTable from "./PendingRFQTable";
 
 function PendingRFQPage() {
   return (
-    <div className="flex flex-col min-h-screen bg-white">
+    <div className="flex flex-col p-4 min-h-screen bg-white">
       <PendingRFQTable />
     </div>
   );

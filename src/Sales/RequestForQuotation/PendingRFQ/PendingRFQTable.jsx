@@ -3,6 +3,7 @@ import FilterSection from "../../components/FilterSection";
 import CustomTable from "../../../components/CustomTable";
 import { HEADER_ITEMS } from "../../../constants/tableHeader";
 import { fetchPendingRFQs } from "../../../utils/apiServices";
+import CenteredLoader from "../../../components/LottiLoader";
 
 function PendingRFQTable() {
   const [tableData, setTableData] = useState([]);
@@ -24,7 +25,7 @@ function PendingRFQTable() {
     <div className="flex flex-col w-full max-md:max-w-full overflow-auto">
       <FilterSection />
       {loading ? (
-        <p>Loading data...</p>
+         <CenteredLoader />
       ) : (
         <CustomTable
         headers={HEADER_ITEMS.rfqs}

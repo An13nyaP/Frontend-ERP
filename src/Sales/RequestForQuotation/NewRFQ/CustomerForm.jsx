@@ -105,7 +105,7 @@ export default function CustomerForm() {
 
     return (
         <form onSubmit={handleSubmit} className="flex flex-col rounded-none">
-            <div className="flex flex-col px-20 pt-11 pb-32 w-full bg-white max-md:px-5 max-md:pb-24 max-md:max-w-full">
+            <div className="flex flex-col px-20 pt-11 pb-32 w-full max-md:px-5 max-md:pb-24 max-md:max-w-full">
                 <div className="flex flex-col w-full max-w-[979px] max-md:max-w-full">
                     <div className="flex gap-5 mb-9 max-md:flex-col">
                         {formFields[0].map((field) => (
@@ -150,7 +150,7 @@ export default function CustomerForm() {
 
                     <button
                         type="submit"
-                        className="flex flex-col justify-center items-center self-center px-5 py-3 mt-20 text-2xl leading-none text-white bg-blue-700 rounded-xl min-h-[44px] w-[220px] max-md:mt-10"
+                        className="flex flex-col justify-center items-center self-center px-5 py-3 mt-20 text-l leading-none text-white bg-blue-700 rounded-xl min-h-[20px] w-[220px] max-md:mt-10"
                     >
                         Add to list
                     </button>

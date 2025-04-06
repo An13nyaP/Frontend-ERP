@@ -20,7 +20,7 @@ function RFQ() {
     };
 
     return (
-        <div className="p-4 mt-4 min-h-screen">
+        <div className="mt-3 min-h-screen">
 
             {/* Navigation Buttons */}
             <div className="flex gap-4">
@@ -56,7 +56,7 @@ function RFQ() {
             </div>
 
             {/* Tab Content */}
-            <div className="bg-white p-4 rounded shadow">
+            <div className="bg-white rounded shadow m-0">
                 {renderContent()}
             </div>
         </div>
