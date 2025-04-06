@@ -39,7 +39,7 @@ function Customer() {
                     Add Customer
                 </button>
             </div>
-            <div className="bg-white p-4 rounded shadow">
+            <div className="flex flex-col w-full max-md:max-w-full overflow-auto">
                 {renderContent()}
             </div>
         </div>

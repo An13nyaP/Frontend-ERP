@@ -8,7 +8,7 @@ import AddPOInward from './AddPOInward/AddPOInward3'
 import ProjectStatus from './ProjectStatus/ProjectStatus'
 
 function Sales() {
-    const [activeTab, setActiveTab] = useState("Customer's") // Default tab
+    const [activeTab, setActiveTab] = useState("Pending Work Orders") // Default tab
 
     const handleTabChange = (tabName) => {
         setActiveTab(tabName)
@@ -34,12 +34,15 @@ function Sales() {
     }
 
     return (
-        <div className="flex overflow-hidden flex-row gap-6 bg-slate-50 p-4">
-            <Sidebar onTabChange={handleTabChange} activeTab={activeTab} />
-            <div className="flex-1">
-                {renderActiveTab()}
-            </div>
-        </div>
+        <div className="flex h-screen bg-slate-50 overflow-hidden">
+    {/* Sidebar - Fixed Width & No Scroll */}
+    <Sidebar onTabChange={handleTabChange} activeTab={activeTab} />
+
+    {/* Main Content - Scrollable */}
+    <div className="flex-1 overflow-y-auto p-4">
+      {renderActiveTab()}
+    </div>
+  </div>
     )
 }
 

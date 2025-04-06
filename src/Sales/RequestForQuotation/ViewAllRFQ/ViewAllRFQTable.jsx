@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import TableHeader from "./TableHeader";
-import TableRow from "./TableRow";
 import FilterSection from "../../components/FilterSection";
 import API_ENDPOINTS from "../../../constants/apiEndPoints";
+import CustomTable from "../../../components/CustomTable";
+import { HEADER_ITEMS } from "../../../constants/tableHeader";
 
 function ViewAllRFQTable() {
   const [tableData, setTableData] = useState([]);
@@ -28,6 +28,10 @@ function ViewAllRFQTable() {
               ? new Date(rfq.lastDateToSubmit).toLocaleDateString()
               : "";
 
+              let statusText = "Pending";
+          if (rfq.status === 0) statusText = "Rejected";
+          else if (rfq.status === 1) statusText = "Quoted";
+
             return {
               rfqid: rfq.rfqid?.toString() || "",
               customer_name: rfq.customer_name || "",
@@ -40,7 +44,7 @@ function ViewAllRFQTable() {
               contactPerson: rfq.contactPerson || "",
               contactPersonEmail: rfq.contactPersonEmail || "",
               contactPersonNumber: rfq.contactPersonNumber || "",
-              status: rfq.status,
+              status: statusText,
               action: null,
             };
           });
@@ -63,13 +67,21 @@ function ViewAllRFQTable() {
   return (
     <div className="flex flex-col w-full max-md:max-w-full overflow-auto">
       <FilterSection />
-      <TableHeader />
       {loading ? (
         <p>Loading data...</p>
       ) : (
-        tableData.map((row, index) => (
-          <TableRow key={row.rfqid || index} {...row} />
-        ))
+        <CustomTable
+        headers={HEADER_ITEMS.rfqs}
+        data={tableData}
+        headerValue={{
+          Status: {
+            quoted: "#22c55e",
+            pending: "#eab308",
+            rejected: "#ff7316",
+          },
+        }}
+        isAction={false}
+      />
       )}
     </div>
   );

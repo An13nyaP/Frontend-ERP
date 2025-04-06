@@ -25,7 +25,7 @@ function Sidebar({ onTabChange, activeTab }) {
             className="flex flex-col mt-8 max-w-full rounded-xl w-[153px]"
           >
             <div
-              className={`px-2.5 py-1 rounded-xl cursor-pointer ${activeTab === item.name ? 'bg-blue-100' : 'bg-slate-50'
+              className={`px-2.5 py-1 rounded-xl cursor-pointer ${activeTab === item.name ? 'bg-blue-100 text-[#041E49] font-semibold' : 'bg-slate-50'
                 } max-md:pr-5`}
               onClick={() => onTabChange(item.name)}
             >
