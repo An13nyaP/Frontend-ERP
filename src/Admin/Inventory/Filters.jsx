@@ -8,7 +8,7 @@ function Filters() {
     ];
 
     return (
-        <div className="flex flex-wrap gap-10 ml-3.5 w-full text-sm max-w-[1020px] max-md:max-w-full">
+        <div className="flex p-4 flex-wrap gap-10 ml-3.5 w-full text-sm max-w-[1020px] max-md:max-w-full">
             {filterOptions.map((option) => (
                 <div key={option.id} className="flex flex-col flex-1 min-h-[66px]">
                     <label htmlFor={option.id} className="leading-none text-sky-950">

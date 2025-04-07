@@ -1,55 +1,42 @@
-import * as React from "react";
-import TableRow from "./TableRow";
+import React, { useEffect, useState } from "react";
 import FilterSection from "../../components/FilterSection";
-import TableHeader from "./TableHeader";
+import CustomTable from "../../../components/CustomTable";
+import { HEADER_ITEMS } from "../../../constants/tableHeader";
+import { fetchAllCustomers } from "../../../utils/apiServices";
+import CenteredLoader from "../../../components/LottiLoader";
 
-const customerData = [
-    {
-        id: "123",
-        name: "Zeal Manufacturing Company",
-        address: "48/A, 5th Main Rd, Kempamma Layout, Lakshmi Devi Nagar, Sanjay Gandhi Nagar, Bengaluru, Karnataka 560096",
-        city: "Bangalore",
-        phone: "4564646469",
-        email: "zealman@gmail.com"
-    },
-    {
-        id: "223",
-        name: "Zeal Manufacturing Company",
-        address: "48/A, 5th Main Rd, Kempamma Layout, Lakshmi Devi Nagar, Sanjay Gandhi Nagar, Bengaluru, Karnataka 560096",
-        city: "Mysore",
-        phone: "4564646469",
-        email: "zealman@gmail.com"
-    },
-    {
-        id: "323",
-        name: "Zeal Manufacturing Company",
-        address: "48/A, 5th Main Rd, Kempamma Layout, Lakshmi Devi Nagar, Sanjay Gandhi Nagar, Bengaluru, Karnataka 560096",
-        city: "Goa",
-        phone: "4564646469",
-        email: "zealman@gmail.com"
-    },
-    {
-        id: "423",
-        name: "Zeal Manufacturing Company",
-        address: "48/A, 5th Main Rd, Kempamma Layout, Lakshmi Devi Nagar, Sanjay Gandhi Nagar, Bengaluru, Karnataka 560096",
-        city: "Hyderabad",
-        phone: "4564646469",
-        email: "zealman@gmail.com"
-    }
-];
+function ViewAllCustomersTable() {
+  const [tableData, setTableData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-function CustomerTable() {
-    return (
-        <div className="flex flex-col text-sm font-medium text-sky-950">
-            <div className="flex flex-col w-full  max-md:max-w-full">
-                <FilterSection className="my-[24px]" />
-                <TableHeader />
-                {customerData.map((customer) => (
-                    <TableRow key={customer.id} {...customer} />
-                ))}
-            </div>
-        </div>
-    );
+  useEffect(() => {
+    const getData = async () => {
+      setLoading(true);
+      const data = await fetchAllCustomers();
+      setTableData(data);
+      setLoading(false);
+    };
+
+    getData();
+  }, []);
+  {
+    console.log("API Response:", tableData);
+  }
+  return (
+    <div className="flex flex-col w-full max-md:max-w-full bg-white p-4 overflow-auto">
+      <FilterSection />
+
+      {loading ? (
+        <CenteredLoader />
+      ) : (
+        <CustomTable
+          headers={HEADER_ITEMS.customers}
+          data={tableData}
+          isAction={false}
+        />
+      )}
+    </div>
+  );
 }
 
-export default CustomerTable;
+export default ViewAllCustomersTable;

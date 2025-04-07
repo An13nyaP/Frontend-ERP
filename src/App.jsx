@@ -1,34 +1,30 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-
-// import POView from "./components/POSView/POViews";
-// import PendingPOsPage from './Admin/PendingPOs/PendingPOsPage';
-// import ViewQuotationsPage from "./Admin/ViewAllQuotations/ViewAllQuotations";
-// //import DashboardLayout from "./components/Home/DashboardLayout";
-// //import PendingPOs from "./components/ui/PendingPOs";
-// //import CustomerManagement from "./components/CreateCustomer/CustomerManagement";
-// import CreateQuotation from "./components/CreateQuotations/CreateQuotation";
-// //import P0 from "./components/CreatePoInward/PurchaseOrderForm";
-// //import POViews from "./components/POSView/POViews";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Admin from "./Admin/Admin";
 import Sales from "./Sales/Sales";
 import Login from "./Login";
-import Salespage from "./Sales/Sales";
-
+import ProjectEngineer from "./Project_Engineer/ProjectEngineer";
+import ProjectManager from "./Project_Manager/ProjectManager";
+// import QualityEngineer from "./Quality_Engineer/Quality_Engineer";
+import Store from "./Store/Store";
+// import Purchase from "./Purchase/Purchase";
 
 function App() {
   return (
-    // keep this p-4 inside each component otherwise the whole screen has padding
-    // <div className="min-h-screen bg-custom-light-blue p-4">
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="/admin" exact element={<Admin />} />
-        <Route path="/sales" exact element={<Sales />} />
+        <Route path="/admin" element={<Admin />} />
+        <Route path="/sales" element={<Sales />} />
+        <Route path="/project-engineer" element={<ProjectEngineer />} />
+        <Route path="/project-manager" element={<ProjectManager />} />
+        <Route path="/store" element={<Store />} />
+        {/* <Route path="/quality-engineer" element={<QualityEngineer />} />
+        
+        <Route path="/purchase" element={<Purchase />} /> */}
       </Routes>
     </BrowserRouter>
-    // </div>
-  )
+  );
 }
 
 export default App;
