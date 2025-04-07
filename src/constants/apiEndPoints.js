@@ -26,6 +26,9 @@ const API_ENDPOINTS = {
         layoff: `${API_BASE_URL}/employees/layoff`,
         viewAllEmployees: `${API_BASE_URL}/employees/all`,
     },
+    company: {
+        update: `${API_BASE_URL}/company/update`,
+    },
 };
 
 export default API_ENDPOINTS;
