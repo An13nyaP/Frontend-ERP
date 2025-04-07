@@ -23,7 +23,7 @@ function Quotations() {
     };
 
     return (
-        <div className="p-4 mt-4 min-h-screen">
+        <div className="mt-4 min-h-screen">
             <div className="flex gap-4">
                 <button
                     className={`px-4 py-2 font-medium rounded ${activeTab === "create"

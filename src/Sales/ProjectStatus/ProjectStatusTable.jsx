@@ -3,7 +3,8 @@ import TableHeader from "./TableHeader";
 import TableRow from "./TableRow";
 import FilterSection from "../components/FilterSection";
 import API_ENDPOINTS from "../../constants/apiEndPoints";
-
+import { HEADER_ITEMS } from "@/constants/tableHeader";
+import CustomTable from "@/components/CustomTable";
 function ProjectStatusTable() {
   const [tableData, setTableData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -15,33 +16,65 @@ function ProjectStatusTable() {
       try {
         const response = await fetch(API_URL);
         const data = await response.json();
+    
+        const formattedQuotations = data.customerAcceptance?.map((q) => {
+          const formattedSlipDate = q.slip_date
+            ? new Date(q.slip_date).toLocaleDateString()
+            : "";
 
-        // In case the data is nested
-        const rows = data.customerAcceptance || data;
+            let acceptanceStatus = "Hold";
+            if (q.customer_acceptance_status === 1) {
+              acceptanceStatus = "Accepted";
+            } else if (q.customer_acceptance_status === 0) {
+              acceptanceStatus = "Rejected";
+            }
 
-        setTableData(rows);
+          return {
+            workordernumber: q.workordernumber?.toString() || "",
+            customername: q.customer || "",
+            customer_acceptance_status: acceptanceStatus,
+            reason_for_rejection: q.reason_for_rejection ?? "N/A",
+            slip_date: formattedSlipDate,
+            slip_number: q.slip_number?.toString() || "",
+            special_instruction: q.special_instruction || "",
+           
+          };
+        }) || [];
+    
+        setTableData(formattedQuotations);
       } catch (error) {
         console.error("Error fetching table data:", error);
+        setTableData([]);
       } finally {
         setLoading(false);
       }
     };
-
+    
     fetchData();
+    
   }, [API_URL]);
 
   return (
     <div className="flex flex-col w-full max-md:max-w-full">
       <div className="pb-[24px]">
         <FilterSection className="my-[24px] mb-[24px]" />
-        <TableHeader className="mt-[24px]" />
 
         {loading ? (
           <div className="text-center text-gray-500 p-4">Loading...</div>
         ) : tableData.length > 0 ? (
-          tableData.map((row, index) => (
-            <TableRow key={index} {...row} />
-          ))
+          <CustomTable
+          headers={HEADER_ITEMS.acceptanceStatus}
+          data={tableData}
+          headerValue={{
+            "Customer Acceptance Status": {
+              accepted: "#22c55e", // green
+              rejected: "#ff7316", // orange
+              hold: "#eab308",     // yellow
+            },
+          }}
+          isAction={true}
+          onEdit={() => {}}
+        />
         ) : (
           <div className="text-center text-gray-500 p-4">No data available.</div>
         )}

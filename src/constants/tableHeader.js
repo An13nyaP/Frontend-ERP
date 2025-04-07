@@ -35,4 +35,23 @@ export const HEADER_ITEMS = {
     "Email Address": "email"
 
   },
+   quotations : {
+    "Quotation ID": "quotationid",
+    "Customer ID": "customerid",
+    "Name": "name",
+    "Phone Number": "phoneNumber",
+    "Email Address": "emailAddress",
+    "Delivery Date": "deliveryDate",
+    "Admin Approved": "AdminApproved",
+  },
+  acceptanceStatus: {
+    "Work Order Number": "workordernumber",
+    "Customer Name": "customername",
+    "Slip Number": "slip_number",
+    "Slip Date": "slip_date",
+    "Special Instruction": "special_instruction",
+    "Reason for Rejection": "reason_for_rejection",
+    "Customer Acceptance Status": "customer_acceptance_status",
+  }
+  
 };

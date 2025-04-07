@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import TableHeader from "./TableHeader";
-import TableRow from "./TableRow";
 import FilterSection from "../../components/FilterSection";
 import API_ENDPOINTS from "../../../constants/apiEndPoints";
+import CenteredLoader from "../../../components/LottiLoader";
+import { HEADER_ITEMS } from "../../../constants/tableHeader";
+import CustomTable from "../../../components/CustomTable";
 
 function QuotationTable() {
   const [tableData, setTableData] = useState([]);
@@ -11,23 +12,48 @@ function QuotationTable() {
   useEffect(() => {
     const fetchQuotations = async () => {
       try {
-        const response = await fetch(API_ENDPOINTS.quotations.viewAllQuotations);
+        const response = await fetch(
+          API_ENDPOINTS.quotations.viewAllQuotations
+        );
+
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
 
         const data = await response.json();
-        console.log("API Response:", data);
 
-        // ✅ Correct key from API response
-        const quotations = data.quotations || [];
+        const formattedQuotations =
+          data.quotations?.map((q) => {
+            // Format deliveryDate to readable format (e.g., MM/DD/YYYY)
+            const formattedDeliveryDate = q.deliveryDate
+              ? new Date(q.deliveryDate).toLocaleDateString()
+              : "";
 
-        if (Array.isArray(quotations)) {
-          setTableData(quotations);
-        } else {
-          console.error("Expected quotations to be an array.");
-          setTableData([]);
-        }
+            // Convert AdminApproved numeric value to string
+            let adminApproval = "Hold";
+            if (q.AdminApproved === 1) adminApproval = "Approved";
+            else if (q.AdminApproved === 0) adminApproval = "Rejected";
+
+            // Parse itemDetails JSON string into an array
+            let itemDetails = [];
+            try {
+              itemDetails = JSON.parse(q.itemDetails);
+            } catch (err) {
+              console.warn("Invalid itemDetails JSON:", err);
+            }
+
+            return {
+              quotationid: q.quotationid?.toString() || "",
+              customerid: q.customerid?.toString() || "",
+              name: q.name || "",
+              emailAddress: q.emailAddress || "",
+              phoneNumber: q.phoneNumber || "",
+              deliveryDate: formattedDeliveryDate,
+              AdminApproved:adminApproval,
+            };
+          }) || [];
+
+        setTableData(formattedQuotations);
       } catch (error) {
         console.error("Error fetching quotations:", error);
         setTableData([]);
@@ -38,20 +64,28 @@ function QuotationTable() {
 
     fetchQuotations();
   }, []);
-
   return (
-    <div className="flex flex-col w-full max-md:max-w-full overflow-auto">
+    <div className="flex flex-col min-h-screen bg-white w-full max-md:max-w-full overflow-auto">
       <FilterSection />
-      <TableHeader />
-      {loading ? (
-        <p className="text-center text-gray-600 my-4">Loading data...</p>
-      ) : tableData.length === 0 ? (
-        <p className="text-center text-gray-500 my-4">No quotations found.</p>
-      ) : (
-        tableData.map((row, index) => (
-          <TableRow key={index} {...row} />
-        ))
-      )}
+      <div className="w-full overflow-x-auto">
+        {loading ? (
+          <CenteredLoader />
+        ) : (
+          <CustomTable
+            headers={HEADER_ITEMS.quotations}
+            data={tableData}
+            headerValue={{
+              "Admin Approved": {
+                approved: "#22c55e", // green
+                rejected: "#ff7316", // orange
+                hold: "#eab308",     // yellow
+              },
+            }}
+            isAction={true}
+            onEdit={() => {}}
+          />
+        )}
+      </div>
     </div>
   );
 }
