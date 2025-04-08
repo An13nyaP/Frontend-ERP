@@ -88,14 +88,14 @@ function Filters2({ data }) {
             </div>
 
             {/* Navigation Buttons */}
-            <div className="flex justify-between px-4 py-4">
+            {/* <div className="flex justify-between px-4 py-4">
                 <button className="bg-blue-600 text-white px-6 py-2 rounded-md shadow hover:bg-blue-700">
                     Previous
                 </button>
                 <button className="bg-blue-600 text-white px-6 py-2 rounded-md shadow hover:bg-blue-700">
                     Next
                 </button>
-            </div>
+            </div> */}
         </div>
     );
 }
